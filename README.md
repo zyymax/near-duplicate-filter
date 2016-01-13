@@ -3,8 +3,10 @@
 
 Brief:  此工具根据Simhash指纹过滤文档集合中近似重复的文档
 
+## [Dependence]
+   pip install Jieba
+
 ## [FILE]
-    sample_filter.sh:	主运行脚本，根据url从fengyi的page数据中解析出长短文本并分别调用去重脚本
     filter_duplicate.sh:	文本去重脚本，对长/短文本数据进行去噪、指纹提取并采用hamming距离除去重复文本
     webcontent_filter.sh:	文本预处理脚本，除去不可打印的字符、数字、字母，合并多个空白符
     python:	python脚本目录
