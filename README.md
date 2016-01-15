@@ -19,10 +19,14 @@ Brief:  此工具根据Simhash指纹过滤文档集合中近似重复的文档
 
 ## [TO DO]
 1.  生成文档集合文件, 每个文档占一行
-    cat *.content > 22.content
-2.  [自去重]启动抽取脚本，生成去重后的_uniq.rowfprint文件
-    ./sample_filter.sh data/22.content
-3.  [与其他文档集合去重]根据其他文档集的.rowfprint文件和生成的_uniq.rowfprint文件生成新文档集的_uniq_new.rowfprint文件
-    python/FilterSalientBySimhashNoScore.py data/22_uniq.rowfprint data/other_docs.rowfprint  data/22_uniq_new.rowfprint
+
+        cat *.content > 22.content
+2.  [自去重]启动去重脚本，生成去重后的_uniq.lenfprint指纹文件和去重后的文档集合_uniq.content文件
+
+        ./sample_filter.sh data/22.content
+3.  [与其他文档集合去重]根据其他文档集的.lenfprint文件和生成的_uniq.lenfprint文件生成新文档集的_uniq_new.lenfprint文件
+
+        python/FilterSalientBySimhashNoScore.py data/22_uniq.lenfprint data/other_docs.lenfprint  data/22_uniq_new.lenfprint
 4.  获取去重后剩余的文档集合
-    python/get_row_sample.py data/22.content data/22_uniq_new.rowfprint > 22_uniq_new.content
+
+        python/get_row_sample.py data/22.content data/22_uniq_new.lenfprint > 22_uniq_new.content
