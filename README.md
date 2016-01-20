@@ -4,7 +4,9 @@
 Brief:  此工具根据Simhash指纹过滤文档集合中近似重复的文档
 
 ## [Dependence]
-   pip install Jieba
+* python 
+* python-jieba
+* bash (sort/paste/awk/sed)
 
 ## [FILE]
     filter_duplicate.sh:	文本去重脚本，对长/短文本数据进行去噪、指纹提取并采用hamming距离除去重复文本
@@ -19,14 +21,12 @@ Brief:  此工具根据Simhash指纹过滤文档集合中近似重复的文档
 
 ## [TO DO]
 1.  生成文档集合文件, 每个文档占一行
+2.  [自去重]启动去重脚本，.content文件所在目录下会自动生成去重后的_uniq.lenfprint指纹文件和去重后的文档集合_uniq.content文件
 
-        cat *.content > 22.content
-2.  [自去重]启动去重脚本，生成去重后的_uniq.lenfprint指纹文件和去重后的文档集合_uniq.content文件
-
-        ./sample_filter.sh data/22.content
+        ./sample_filter.sh data/docs.content
 3.  [与其他文档集合去重]根据其他文档集的.lenfprint文件和生成的_uniq.lenfprint文件生成新文档集的_uniq_new.lenfprint文件
 
-        python/FilterSalientBySimhashNoScore.py data/22_uniq.lenfprint data/other_docs.lenfprint  data/22_uniq_new.lenfprint
-4.  获取去重后剩余的文档集合
+        python/FilterSalientBySimhashNoScore.py data/docs_uniq.lenfprint data/other_docs.lenfprint  data/docs_uniq_new.lenfprint
+4.  [与其他文档集合去重]获取去重后剩余的文档集合
 
-        python/get_row_sample.py data/22.content data/22_uniq_new.lenfprint > 22_uniq_new.content
+        python/get_row_sample.py data/docs.content data/docs_uniq_new.lenfprint > docs_uniq_new.content
